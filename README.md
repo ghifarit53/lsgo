@@ -7,3 +7,14 @@ I've tried every `ls` alternative that supports displaying icons, but haven't fo
 <img width="888" alt="lsi_benchmark" src="https://github.com/ghifarit53/ppb_midterm/assets/59758342/dc3f30d7-d470-4f38-b443-5bbd0ddedda8">
 
 > Also quite fast IMO
+
+# Install instruction
+
+Only tested on macOS
+
+Requirements:
+- Golang toolchain (tested on 1.22.3)
+
+```sh
+$ go install
+```
