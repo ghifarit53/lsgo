@@ -28,12 +28,12 @@ var fileStyle = map[string]FileStyle{
 	"dir_empty":         {"󰉖", Blue},
 	"dir_empty_symlink": {"󰉖", Cyan},
 
-	// default for files
+	// files
 	"file_empty":      {"󰈤", White},
 	"file_symlink":    {"󰌹", Cyan},
 	"file_executable": {"", Red},
 
-	// developer icons
+	// programming languages
 	"c":     {"", Magenta},
 	"cpp":   {"", Blue},
 	"cs":    {"", Magenta},
@@ -65,7 +65,7 @@ var fileStyle = map[string]FileStyle{
 	"tsx":   {"", Blue},
 	"vue":   {"", Green},
 
-	// media files
+	// audio files
 	"aac": {"󰝚", Red},
 	"m4a": {"󰝚", Red},
 	"mp3": {"󰝚", Red},
@@ -75,14 +75,16 @@ var fileStyle = map[string]FileStyle{
 	"opus": {"󱑽", Red},
 	"wav":  {"󱑽", Red},
 
+	// video files
 	"avi":  {"󰎁", Red},
 	"mkv":  {"󰎁", Red},
 	"mov":  {"󰎁", Red},
 	"mp4":  {"󰎁", Red},
 	"webm": {"󰎁", Red},
 
+	// image files
 	"bmp":  {"󰋩", Blue},
-	"gif":  {"󰋩", Blue},
+	"gif":  {"󰵸", Blue},
 	"heic": {"󰋩", Blue},
 	"jpeg": {"󰋩", Blue},
 	"jpg":  {"󰋩", Blue},
@@ -94,47 +96,56 @@ var fileStyle = map[string]FileStyle{
 	"ico":  {"", Blue},
 
 	// documents
-	"doc":  {"󱎒", Blue},
-	"docx": {"󱎒", Blue},
+	"doc":  {"󰈬", Blue},
+	"docx": {"󰈬", Blue},
 	"epub": {"󰂺", Green},
+	"md":   {"", White},
 	"mobi": {"󰂺", Green},
 	"pdf":  {"", Red},
-	"ppt":  {"󱎐", Red},
-	"pptx": {"󱎐", Red},
-	"xls":  {"󱎏", Green},
-	"xlsx": {"󱎏", Green},
+	"ppt":  {"󰈧", Red},
+	"pptx": {"󰈧", Red},
+	"rtf":  {"󱘍", White},
+	"xls":  {"󰈛", Green},
+	"xlsx": {"󰈛", Green},
 
-	// archive
-	"7z":  {"", Green},
-	"bz2": {"", Green},
-	"gz":  {"", Green},
-	"rar": {"", Green},
-	"tar": {"", Green},
-	"xz":  {"", Green},
-	"zip": {"", Green},
+	// archives
+	"7z":  {"󰗄", Green},
+	"bz2": {"󰗄", Green},
+	"gz":  {"󰗄", Green},
+	"rar": {"󰗄", Green},
+	"tar": {"󰗄", Green},
+	"xz":  {"󰗄", Green},
+	"zip": {"󰗄", Green},
 
 	// disc image
-	"dmg": {"", White},
-	"iso": {"", White},
+	"dmg": {"󰆓", White},
+	"iso": {"󰆓", White},
 
 	// font files
-	"otf":   {"", White},
-	"ttf":   {"", White},
-	"woff":  {"", White},
-	"woff2": {"", White},
+	"otf":   {"", White},
+	"ttf":   {"", White},
+	"woff":  {"", White},
+	"woff2": {"", White},
 
-	// misc
-	"txt":   {"󰈙", White},
-	"csv":   {"󰸫", White},
-	"env":   {"󰒓", Yellow},
-	"ipynb": {"", Yellow},
-	"json":  {"", Yellow},
-	"lock":  {"󰌾", Yellow},
-	"md":    {"", White},
+	// configuration files
+	"plist": {"󰒓", White},
 	"toml":  {"󰒓", Magenta},
 	"xml":   {"󰗀", Magenta},
 	"yaml":  {"󰒓", Magenta},
 	"yml":   {"󰒓", Magenta},
+
+	// text data
+	"csv":  {"󰸫", White},
+	"json": {"", Yellow},
+	"lock": {"󰌾", Yellow},
+
+	// misc
+	"env":   {"󰒓", Yellow},
+	"fit":   {"󰥛", Red},
+	"gpx":   {"󰍒", Green},
+	"ipynb": {"󰺂", Blue},
+	"tcx":   {"󰍒", Green},
+	"txt":   {"󰈙", White},
 }
 
 func getStyle(info FileInfo) FileStyle {
