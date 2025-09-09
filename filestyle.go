@@ -143,6 +143,9 @@ func getStyle(info FileInfo) FileStyle {
 			key = "file_empty"
 		} else if style, ok := fileStyle[info.extension]; ok {
 			return style
+		} else {
+			// assume it's a text file
+			key = "txt"
 		}
 	}
 

@@ -2,6 +2,7 @@ package main
 
 import (
 	"io"
+	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
@@ -15,6 +16,7 @@ type FileInfo struct {
 	size         int64
 	extension    string
 	isExecutable bool
+	isTextFile   bool
 }
 
 type ByDirectoryAndName []FileInfo
@@ -31,7 +33,25 @@ func (a ByDirectoryAndName) Less(i, j int) bool {
 	}
 }
 
-// single file
+func isTextFile(path string) (bool, error) {
+	f, err := os.Open(path)
+	if err != nil {
+		return false, err
+	}
+	defer f.Close()
+
+	// Read up to 512 bytes (DetectContentType uses at most 512 bytes)
+	buf := make([]byte, 512)
+	n, err := f.Read(buf)
+	if err != nil && err != io.EOF {
+		return false, err
+	}
+
+	mimeType := http.DetectContentType(buf[:n])
+	// MIME type for plain text is usually "text/plain; charset=utf-8"
+	return mimeType == "text/plain; charset=utf-8" || mimeType[:5] == "text/", nil
+}
+
 func getFileInfo(path string) FileInfo {
 	var info FileInfo
 	info.name = path
@@ -46,6 +66,7 @@ func getFileInfo(path string) FileInfo {
 	info.size = fi.Size()
 	info.isExecutable = (mode & 0111) != 0
 	info.isDirectory = mode.IsDir()
+	info.isTextFile, _ = isTextFile(path)
 	info.extension = strings.TrimPrefix(filepath.Ext(path), ".")
 
 	// symlink?
