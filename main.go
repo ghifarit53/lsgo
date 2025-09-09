@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"os"
 	"sort"
@@ -8,32 +9,26 @@ import (
 )
 
 func main() {
-	// By default don't include hidden files
-	showHidden := false
+	showHidden := flag.Bool("a", false, "Show hidden files")
 
-	if len(os.Args) > 1 {
-		if os.Args[1] == "-a" {
-			showHidden = true
-		} else {
-			log.Fatal("ERROR: Unrecognized argument")
-		}
-	}
+	flag.Parse()
 
-	cwdContent, err := os.ReadDir(".")
+	entries, err := os.ReadDir(".")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fileList := make([]string, 0)
-	for _, content := range cwdContent {
-		if !showHidden && strings.HasPrefix(content.Name(), ".") {
-			continue
+	files := []string{}
+	for _, v := range entries {
+		if *showHidden || !strings.HasPrefix(v.Name(), ".") {
+			files = append(files, v.Name())
 		}
-		fileList = append(fileList, content.Name())
 	}
 
-	fileInfoArray := createFileInfoArray(fileList)
-	sort.Sort(ByDirectoryAndName(fileInfoArray))
+	fileInfo := createFileInfoArray(files)
+	sort.Sort(ByDirectoryAndName(fileInfo))
 
-	printIconAndFilenames(fileInfoArray)
+	for _, v := range fileInfo {
+		printIconFilename(v)
+	}
 }
