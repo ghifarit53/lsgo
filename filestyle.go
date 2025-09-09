@@ -58,7 +58,7 @@ var fileStyle = map[string]FileStyle{
 	"py":    {"", Yellow},
 	"rb":    {"", Red},
 	"rs":    {"", Blue},
-	"sass":  {"", Red},
+	"sass":  {"", Red},
 	"sh":    {"󰐤", Magenta},
 	"swift": {"", Red},
 	"ts":    {"", Blue},
@@ -90,6 +90,8 @@ var fileStyle = map[string]FileStyle{
 	"jpg":  {"󰋩", Blue},
 	"png":  {"󰋩", Blue},
 	"svg":  {"󰋩", Blue},
+	"tif":  {"󰋩", Blue},
+	"tiff": {"󰋩", Blue},
 	"webp": {"󰋩", Blue},
 
 	"icns": {"", Blue},
@@ -101,6 +103,9 @@ var fileStyle = map[string]FileStyle{
 	"epub": {"󰂺", Green},
 	"md":   {"", White},
 	"mobi": {"󰂺", Green},
+	"odp":  {"󰈧", Red},
+	"ods":  {"󰈛", Green},
+	"odt":  {"󰈬", Blue},
 	"pdf":  {"", Red},
 	"ppt":  {"󰈧", Red},
 	"pptx": {"󰈧", Red},
@@ -117,6 +122,13 @@ var fileStyle = map[string]FileStyle{
 	"xz":  {"󰗄", Green},
 	"zip": {"󰗄", Green},
 
+	// design graphics
+	"ai":    {"", Red},
+	"blend": {"", Red},
+	"fbx":   {"󰆦", Cyan},
+	"psd":   {"", Blue},
+	"stl":   {"󰆦", Cyan},
+
 	// disc image
 	"dmg": {"󰆓", White},
 	"iso": {"󰆓", White},
@@ -127,12 +139,19 @@ var fileStyle = map[string]FileStyle{
 	"woff":  {"", White},
 	"woff2": {"", White},
 
+	// console games
+	"gb":  {"󰺵", Blue},
+	"gba": {"󰺵", Blue},
+	"gbc": {"󰺵", Blue},
+
 	// configuration files
+	"ini":   {"󰒓", White},
 	"plist": {"󰒓", White},
-	"toml":  {"󰒓", Magenta},
-	"xml":   {"󰗀", Magenta},
-	"yaml":  {"󰒓", Magenta},
-	"yml":   {"󰒓", Magenta},
+	"toml":  {"󰒓", White},
+	"xml":   {"󰗀", White},
+	"yaml":  {"󰒓", White},
+	"yml":   {"󰒓", White},
+	"env":   {"󰇽", Yellow},
 
 	// text data
 	"csv":  {"󰸫", White},
@@ -140,10 +159,12 @@ var fileStyle = map[string]FileStyle{
 	"lock": {"󰌾", Yellow},
 
 	// misc
-	"env":   {"󰒓", Yellow},
+	"apk":   {"", Green},
+	"exe":   {"", Blue},
 	"fit":   {"󰥛", Red},
 	"gpx":   {"󰍒", Green},
 	"ipynb": {"󰺂", Blue},
+	"jar":   {"", Blue},
 	"tcx":   {"󰍒", Green},
 	"txt":   {"󰈙", White},
 }
@@ -170,7 +191,7 @@ func getStyle(info FileInfo) FileStyle {
 			key = "file_empty"
 		} else if style, ok := fileStyle[info.extension]; ok {
 			return style
-		} else if info.isTextFile {
+		} else if isText, err := isTextFile(info.name); err == nil && isText {
 			key = "txt"
 		}
 	}

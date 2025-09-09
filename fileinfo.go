@@ -16,7 +16,6 @@ type FileInfo struct {
 	size         int64
 	extension    string
 	isExecutable bool
-	isTextFile   bool
 }
 
 type ByDirectoryAndName []FileInfo
@@ -66,7 +65,6 @@ func getFileInfo(path string) FileInfo {
 	info.size = fi.Size()
 	info.isExecutable = (mode & 0111) != 0
 	info.isDirectory = mode.IsDir()
-	info.isTextFile, _ = isTextFile(path)
 	info.extension = strings.TrimPrefix(filepath.Ext(path), ".")
 
 	// symlink?
