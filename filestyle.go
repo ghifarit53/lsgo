@@ -105,13 +105,13 @@ var fileStyle = map[string]FileStyle{
 	"xlsx": {"󱎏", Green},
 
 	// archive
-	"7z":  {"", Green},
-	"bz2": {"", Green},
-	"gz":  {"", Green},
-	"rar": {"", Green},
-	"tar": {"", Green},
-	"xz":  {"", Green},
-	"zip": {"", Green},
+	"7z":  {"", Green},
+	"bz2": {"", Green},
+	"gz":  {"", Green},
+	"rar": {"", Green},
+	"tar": {"", Green},
+	"xz":  {"", Green},
+	"zip": {"", Green},
 
 	// disc image
 	"dmg": {"", White},
@@ -159,8 +159,7 @@ func getStyle(info FileInfo) FileStyle {
 			key = "file_empty"
 		} else if style, ok := fileStyle[info.extension]; ok {
 			return style
-		} else {
-			// assume it's a text file
+		} else if info.isTextFile {
 			key = "txt"
 		}
 	}
