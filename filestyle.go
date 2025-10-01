@@ -40,6 +40,7 @@ var fileStyle = map[string]FileStyle{
 	"css":   {"", Green},
 	"dart":  {"", Cyan},
 	"ex":    {"", Magenta},
+	"fish":  {"󰐤", Magenta},
 	"gd":    {"", Blue},
 	"go":    {"", Blue},
 	"h":     {"󰬏", Blue},
@@ -56,14 +57,17 @@ var fileStyle = map[string]FileStyle{
 	"perl":  {"", Blue},
 	"php":   {"", Magenta},
 	"py":    {"", Yellow},
+	"r":     {"", Blue},
 	"rb":    {"", Red},
 	"rs":    {"", Blue},
 	"sass":  {"", Red},
+	"scala": {"", Red},
 	"sh":    {"󰐤", Magenta},
 	"swift": {"", Red},
 	"ts":    {"", Blue},
 	"tsx":   {"", Blue},
 	"vue":   {"", Green},
+	"zsh":   {"󰐤", Magenta},
 
 	// audio files
 	"aac": {"󰝚", Red},
@@ -76,6 +80,9 @@ var fileStyle = map[string]FileStyle{
 	"wav":  {"󱑽", Red},
 
 	// video files
+	"3gp":  {"󰎁", Red},
+	"flv":  {"󰎁", Red},
+	"wmv":  {"󰎁", Red},
 	"avi":  {"󰎁", Red},
 	"mkv":  {"󰎁", Red},
 	"mov":  {"󰎁", Red},
@@ -94,6 +101,7 @@ var fileStyle = map[string]FileStyle{
 	"tiff": {"󰋩", Blue},
 	"webp": {"󰋩", Blue},
 
+	// icon files
 	"icns": {"", Blue},
 	"ico":  {"", Blue},
 
@@ -110,6 +118,7 @@ var fileStyle = map[string]FileStyle{
 	"ppt":  {"󰈧", Red},
 	"pptx": {"󰈧", Red},
 	"rtf":  {"󱘍", White},
+	"tex":  {"", White},
 	"xls":  {"󰈛", Green},
 	"xlsx": {"󰈛", Green},
 
@@ -163,8 +172,10 @@ var fileStyle = map[string]FileStyle{
 	"exe":   {"", Blue},
 	"fit":   {"󰥛", Red},
 	"gpx":   {"󰍒", Green},
+	"ics":   {"", Red},
 	"ipynb": {"󰺂", Blue},
 	"jar":   {"", Blue},
+	"pkg":   {"󰏓", Yellow},
 	"tcx":   {"󰍒", Green},
 	"txt":   {"󰈙", White},
 }
