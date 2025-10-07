@@ -63,7 +63,7 @@ var fileStyle = map[string]FileStyle{
 	"sass":  {"", Red},
 	"scala": {"", Red},
 	"sh":    {"󰐤", Magenta},
-	"swift": {"", Red},
+	"swift": {"󰛥", Red},
 	"ts":    {"", Blue},
 	"tsx":   {"", Blue},
 	"vue":   {"", Green},
@@ -139,14 +139,14 @@ var fileStyle = map[string]FileStyle{
 	"stl":   {"󰆦", Cyan},
 
 	// disc image
-	"dmg": {"󰆓", White},
-	"iso": {"󰆓", White},
+	"dmg": {"󰻂", White},
+	"iso": {"󰻂", White},
 
 	// font files
-	"otf":   {"", White},
-	"ttf":   {"", White},
-	"woff":  {"", White},
-	"woff2": {"", White},
+	"otf":   {"", White},
+	"ttf":   {"", White},
+	"woff":  {"", White},
+	"woff2": {"", White},
 
 	// console games
 	"gb":  {"󰺵", Blue},
@@ -176,6 +176,7 @@ var fileStyle = map[string]FileStyle{
 	"ipynb": {"󰺂", Blue},
 	"jar":   {"", Blue},
 	"pkg":   {"󰏓", Yellow},
+	"sav":   {"󰆓", Blue},
 	"tcx":   {"󰍒", Green},
 	"txt":   {"󰈙", White},
 }
