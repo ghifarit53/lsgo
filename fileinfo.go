@@ -67,7 +67,7 @@ func getFileInfo(path string) FileInfo {
 	info.isDirectory = mode.IsDir()
 	info.extension = strings.TrimPrefix(filepath.Ext(path), ".")
 
-	// symlink?
+	// check for symlink
 	if mode&os.ModeSymlink != 0 {
 		info.isSymlink = true
 		if realPath, err := filepath.EvalSymlinks(path); err == nil {
@@ -78,7 +78,6 @@ func getFileInfo(path string) FileInfo {
 		}
 	}
 
-	// expensive checks → only if really needed
 	if info.isDirectory {
 		// check emptiness by reading just 1 entry
 		if f, err := os.Open(path); err == nil {

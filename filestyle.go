@@ -10,7 +10,7 @@ const (
 	Blue    = "\033[34m"
 	Magenta = "\033[35m"
 	Cyan    = "\033[36m"
-	White   = "\033[97m"
+	White   = "\033[37m"
 )
 
 type FileStyle struct {
@@ -40,6 +40,7 @@ var fileStyle = map[string]FileStyle{
 	"css":   {"", Green},
 	"dart":  {"", Cyan},
 	"ex":    {"", Magenta},
+	"fnl":   {"", Green},
 	"fish":  {"󰐤", Magenta},
 	"gd":    {"", Blue},
 	"go":    {"", Blue},
@@ -65,6 +66,7 @@ var fileStyle = map[string]FileStyle{
 	"sh":    {"󰐤", Magenta},
 	"swift": {"󰛥", Red},
 	"ts":    {"", Blue},
+	"typ":   {"", Cyan},
 	"tsx":   {"", Blue},
 	"vue":   {"", Green},
 	"zsh":   {"󰐤", Magenta},
